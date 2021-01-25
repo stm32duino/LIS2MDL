@@ -87,6 +87,8 @@ class LIS2MDLSensor
   public:
     LIS2MDLSensor(TwoWire *i2c, uint8_t address=LIS2MDL_I2C_ADD);
     LIS2MDLSensor(SPIClass *spi, int cs_pin, uint32_t spi_speed=2000000);
+    LIS2MDLStatusTypeDef begin();
+    LIS2MDLStatusTypeDef end();
     LIS2MDLStatusTypeDef ReadID(uint8_t *Id);
     LIS2MDLStatusTypeDef Enable();
     LIS2MDLStatusTypeDef Disable();
