@@ -85,7 +85,7 @@ typedef struct
 class LIS2MDLSensor
 {
   public:
-    LIS2MDLSensor(TwoWire *i2c, uint8_t address=LIS2MDL_I2C_ADD);
+    LIS2MDLSensor(TwoWire *i2c);
     LIS2MDLSensor(SPIClass *spi, int cs_pin, uint32_t spi_speed=2000000);
     LIS2MDLStatusTypeDef begin();
     LIS2MDLStatusTypeDef end();

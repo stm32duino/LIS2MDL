@@ -47,13 +47,14 @@
  * @param i2c object of an helper class which handles the I2C peripheral
  * @param address the address of the component's instance
  */
-LIS2MDLSensor::LIS2MDLSensor(TwoWire *i2c, uint8_t address) : dev_i2c(i2c), address(address)
+LIS2MDLSensor::LIS2MDLSensor(TwoWire *i2c) : dev_i2c(i2c)
 {
   dev_spi = NULL;
   reg_ctx.write_reg = LIS2MDL_io_write;
   reg_ctx.read_reg = LIS2MDL_io_read;
   reg_ctx.handle = (void *)this;
-  mag_is_enabled = 0;
+  address = LIS2MDL_I2C_ADD;
+  mag_is_enabled = 0U;
 }
 
 /** Constructor
@@ -67,8 +68,8 @@ LIS2MDLSensor::LIS2MDLSensor(SPIClass *spi, int cs_pin, uint32_t spi_speed) : de
   reg_ctx.read_reg = LIS2MDL_io_read;
   reg_ctx.handle = (void *)this;
   dev_i2c = NULL;
-  address = 0;
-  mag_is_enabled = 0;
+  address = 0U;
+  mag_is_enabled = 0U;
 }
 
 /**
@@ -187,7 +188,7 @@ LIS2MDLStatusTypeDef LIS2MDLSensor::Enable()
     return LIS2MDL_ERROR;
   }
 
-  mag_is_enabled = 1;
+  mag_is_enabled = 1U;
 
   return LIS2MDL_OK;
 }
@@ -210,7 +211,7 @@ LIS2MDLStatusTypeDef LIS2MDLSensor::Disable()
     return LIS2MDL_ERROR;
   }
 
-  mag_is_enabled = 0;
+  mag_is_enabled = 0U;
 
   return LIS2MDL_OK;
 }
