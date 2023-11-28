@@ -49,7 +49,12 @@
 #include "lis2mdl_reg.h"
 
 /* Defines -------------------------------------------------------------------*/
-
+/* For compatibility with ESP32 platforms */
+#ifdef ESP32
+  #ifndef MSBFIRST
+    #define MSBFIRST SPI_MSBFIRST
+  #endif
+#endif
 
 #define LIS2MDL_MAG_SENSITIVITY_FS_50GAUSS  1.500f  /**< Sensitivity value for 50 gauss full scale [mgauss/LSB] */
 
